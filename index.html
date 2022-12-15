@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Amigo Secreto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="jwt-decode.js"></script>
+    <style media="screen">
+      html {
+        height: 100%;
+      }
+      body {
+        font-family: 'Roboto', sans-serif;
+        height: 100%;
+        margin: 0px;
+        background: #1f252f;
+        color: white;
+      }
+
+      .container {
+        display: flex;
+        max-width: 600px;
+        text-align: center;
+        margin: 0 auto;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .container h1 {
+        font-weight: 300;
+        line-height: 60px
+      }
+
+      .container span {
+        font-weight: 600
+      }
+
+      .container span#client {
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Olá <span id="owner"></span> bem vindo ao Amigo Secreto da Família Carneiro. Seu Amigo secreto é <span id="client"></span>. Boas festas.</h1>
+      <iframe src="https://giphy.com/embed/HloNK1z39EkEQcreIo" width="300" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></p>
+    </div>
+  </body>
+  <script type="text/javascript">
+    // eyJhbGciOiJIUzI1NiJ9.eyJvd25lciI6Ik1hcmlhIiwiY2xpZW50IjoiSm9zw6kifQ.TFf6gOJocyGs4BDB1vQVz7x6dggVBHJQc_btWWaHEzk
+    function decode() {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const token = urlParams.get('token')
+      const payload = jwt_decode(token)
+
+
+      document.querySelector('#owner').append(payload.owner)
+      document.querySelector('#client').append(payload.client)
+
+      // console.log(token)
+      console.log(payload)
+    }
+
+    decode()
+  </script>
+</html>
