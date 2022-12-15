@@ -2,6 +2,7 @@ require 'bundler/setup'
 Bundler.require
 
 def encode(payload)
+  secrect_key = 'amigo_secreto'
   JWT.encode(payload, 'amigo_secreto', 'HS256')
 end
 
@@ -13,6 +14,7 @@ final_list = []
 
 members.each do |owner|
   client = avaliable_mebers.sample
+
   token = encode({owner: owner, client: client})
   url = "https://gilderlan.github.io/amigosecreto?token=#{token}"
 
@@ -23,6 +25,5 @@ members.each do |owner|
   avaliable_mebers.delete(client)
 end
 
-puts final_list
-
 puts links
+puts final_list

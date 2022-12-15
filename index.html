@@ -53,9 +53,27 @@
   </body>
   <script type="text/javascript">
     function decode() {
+      const invalidTokes = [
+        'eyJhbGciOiJIUzI1NiJ9.eyJvd25lciI6IkdpbCIsImNsaWVudCI6Ik1lbGFuaWUifQ.FwM_T-FkOolw__wMQ00irXFABJ3p0sCP1_-VEs46uKI',
+        'eyJhbGciOiJIUzI1NiJ9.eyJvd25lciI6Ik1lbGFuaWUiLCJjbGllbnQiOiJJbmdyYSJ9.klmyf4bxwhOL8v0uHefRKezd9HHVmL_mjVteclqP5cc',
+        'eyJhbGciOiJIUzI1NiJ9.eyJvd25lciI6Ikl2b25lIiwiY2xpZW50IjoiR2lsIn0.KNqmsOS8VTx6gTLsStRLqzmzy5QgHJ3ydGDnZ7vbzc0',
+        'eyJhbGciOiJIUzI1NiJ9.eyJvd25lciI6Ik5haXIiLCJjbGllbnQiOiJQZWRybyJ9.TMwze3ZisFEg6ZiS6Jbby9r8lCqdDxTLtxprVsQy9Ts',
+        'eyJhbGciOiJIUzI1NiJ9.eyJvd25lciI6Ik1laXJlIiwiY2xpZW50IjoiSXZvbmUifQ.rSvAmDQ7hh_rPbLJN24ZK1eKkEvfFK255iT_AvfHW1E',
+        'eyJhbGciOiJIUzI1NiJ9.eyJvd25lciI6IkllZGEiLCJjbGllbnQiOiJJZWRhIn0.fcGdUSoXZOWnBH_hgZMzXBXKNM_6bicDc0HHn-t5FJA',
+        'eyJhbGciOiJIUzI1NiJ9.eyJvd25lciI6IkluZ3JhIiwiY2xpZW50IjoiTWVpcmUifQ.30k9QAi29ZY4zdl4q6imnCLiuAHs_I_Dyo3MvFfTBVg',
+        'eyJhbGciOiJIUzI1NiJ9.eyJvd25lciI6IlBlZHJvIiwiY2xpZW50IjoiTmFpciJ9.hh9Ji20uv5Agj89VFJAPObOd3kjSImtzwg0jGQ96eD0',
+      ]
+
+
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const token = urlParams.get('token')
+
+      if (invalidTokes.includes(token)) {
+        document.querySelector('.container').setHTML("<h1>Sorteio cancelado</h1>")
+        return
+      }
+
       const payload = jwt_decode(token)
 
 
