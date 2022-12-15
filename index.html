@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Amigo Secreto</title>
     <script src="jwt-decode.js"></script>
     <style>
@@ -15,6 +16,7 @@
         margin: 0px;
         background: #1f252f;
         color: white;
+        font-size: 16px;
       }
 
       .container {
@@ -23,6 +25,7 @@
         text-align: center;
         margin: 0 auto;
         height: 100%;
+        padding: 1rem;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
@@ -44,12 +47,11 @@
   </head>
   <body>
     <div class="container">
-      <h1>Olá <span id="owner"></span> bem vindo ao Amigo Secreto da Família Carneiro. Seu Amigo secreto é <span id="client"></span>. Boas festas.</h1>
+      <h1>Olá <span id="owner"></span>, bem vindo(a) ao Amigo Secreto da Família Carneiro. Seu amigo secreto é <span id="client"></span>. Boas festas!</h1>
       <iframe src="https://giphy.com/embed/HloNK1z39EkEQcreIo" width="300" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></p>
     </div>
   </body>
   <script type="text/javascript">
-    // eyJhbGciOiJIUzI1NiJ9.eyJvd25lciI6Ik1hcmlhIiwiY2xpZW50IjoiSm9zw6kifQ.TFf6gOJocyGs4BDB1vQVz7x6dggVBHJQc_btWWaHEzk
     function decode() {
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
@@ -59,9 +61,6 @@
 
       document.querySelector('#owner').append(payload.owner)
       document.querySelector('#client').append(payload.client)
-
-      // console.log(token)
-      console.log(payload)
     }
 
     decode()
