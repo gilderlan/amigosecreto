@@ -14,6 +14,11 @@ final_list = []
 
 members.each do |owner|
   client = avaliable_mebers.sample
+  # client = owner == 'Ivone' ? 'Gil' : avaliable_mebers.sample
+
+  while owner == client do
+    client = avaliable_mebers.sample
+  end
 
   token = encode({owner: owner, client: client})
   url = "https://gilderlan.github.io/amigosecreto?token=#{token}"
@@ -26,4 +31,4 @@ members.each do |owner|
 end
 
 puts links
-puts final_list
+# puts final_list
